@@ -179,6 +179,8 @@ class FileListerAdapter extends RecyclerView.Adapter<FileListerAdapter.FileListH
 
     @Override
     public void onBindViewHolder(FileListHolder holder, int position) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this.getContext(), R.style.AlertDialogStyle);
+
         File f = data.get(position);
         if (f != null) {
             holder.name.setText(f.getName());

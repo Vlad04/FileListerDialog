@@ -8,7 +8,9 @@
     <yogesh.firzen.filelister.FilesListerView
         android:layout_width="match_parent"
         android:background="#ffffff"
+        android:theme="@style/AlertDialog.AppCompat.Light"
         android:layout_height="match_parent"
+
         />
 
 </android.support.constraint.ConstraintLayout>
