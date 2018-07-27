@@ -3,15 +3,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#ffffff"
+
     android:padding="10dp">
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
+        android:background="#ffffff"
         android:layout_height="wrap_content">
 
         <android.support.v7.widget.AppCompatEditText
             android:id="@+id/edittext"
             android:layout_width="match_parent"
+            android:background="#ffffff"
             android:layout_height="wrap_content"
             android:hint="@string/create_folder_hint"
             android:imeOptions="actionDone"
