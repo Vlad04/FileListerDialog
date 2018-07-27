@@ -184,7 +184,7 @@ class FileListerAdapter extends RecyclerView.Adapter<FileListerAdapter.FileListH
             holder.name.setText(f.getName());
         } else if (!unreadableDir) {
             holder.name.setText("Create a new Folder here");
-            holder.icon.setImageResource(R.drawable.ic_create_new_folder_black_48dp);
+            holder.icon.setImageResource(R.drawable.ic_record);
         }
         if (unreadableDir) {
             if (f != null) {
@@ -196,18 +196,18 @@ class FileListerAdapter extends RecyclerView.Adapter<FileListerAdapter.FileListH
             }
         }
         if (position == 0 && f != null && !unreadableDir) {
-            holder.icon.setImageResource(R.drawable.ic_subdirectory_up_black_48dp);
+            holder.icon.setImageResource(R.drawable.ic_return_button);
         } else if (f != null) {
             if (f.isDirectory())
-                holder.icon.setImageResource(R.drawable.ic_folder_black_48dp);
+                holder.icon.setImageResource(R.drawable.ic_record);
             else if (S.isImage(f))
-                holder.icon.setImageResource(R.drawable.ic_photo_black_48dp);
+                holder.icon.setImageResource(R.drawable.ic_document);
             else if (S.isVideo(f))
-                holder.icon.setImageResource(R.drawable.ic_videocam_black_48dp);
+                holder.icon.setImageResource(R.drawable.ic_document);
             else if (S.isAudio(f))
-                holder.icon.setImageResource(R.drawable.ic_audiotrack_black_48dp);
+                holder.icon.setImageResource(R.drawable.ic_document);
             else
-                holder.icon.setImageResource(R.drawable.ic_insert_drive_file_black_48dp);
+                holder.icon.setImageResource(R.drawable.ic_document);
         }
     }
 
