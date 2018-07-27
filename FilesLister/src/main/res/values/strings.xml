@@ -1,4 +1,12 @@
 <resources>
     <string name="namma_per_uh">FileLister</string>
     <string name="create_folder_hint">Enter Folder Name Here</string>
+    <string name="internal_text">Internal</string>
+    <string name="external_text">External</string>
+    <string name="selectFile_text">Select a file</string>
+    <string name="selectDirectory_text">Select a directory</string>
+    <string name="selectVideo_text">Select a video file</string>
+    <string name="selectImage_text">Select an image file</string>
+    <string name="selectAudio_text">Select an audio file</string>
+    <string name="cancel_text"><font color='#0591c9'>Cancel</font></string>
 </resources>

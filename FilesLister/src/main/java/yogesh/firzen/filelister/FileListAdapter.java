@@ -191,9 +191,9 @@ class FileListerAdapter extends RecyclerView.Adapter<FileListerAdapter.FileListH
         if (unreadableDir) {
             if (f != null) {
                 if (position == 0) {
-                    holder.name.setText(f.getName() + " (Internal)");
+                    holder.name.setText(f.getName() + " (" + getContext().getString(R.string.internal_text) + ")");
                 } else {
-                    holder.name.setText(f.getName() + " (External)");
+                    holder.name.setText(f.getName() + " (" + getContext().getString(R.string.external_text) + ")");
                 }
             }
         }
@@ -279,6 +279,7 @@ class FileListerAdapter extends RecyclerView.Adapter<FileListerAdapter.FileListH
                 if (f.isDirectory()) {
                     fileLister(f);
                 } else {
+                    GlobalBus.getBus().post(new Events.Selected("UPDATE"));
                 }
             }
         }
