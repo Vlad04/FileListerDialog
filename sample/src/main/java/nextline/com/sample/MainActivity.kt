@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         button_library.setOnClickListener {
-            val fileListerDialog = FileListerDialog.createFileListerDialog(this@MainActivity, R.style.AppTheme)
+            val fileListerDialog = FileListerDialog.createFileListerDialog(this@MainActivity)
 
             fileListerDialog.setOnFileSelectedListener(object : OnFileSelectedListener {
                 override fun onFileSelected(file: File?, path: String?) {

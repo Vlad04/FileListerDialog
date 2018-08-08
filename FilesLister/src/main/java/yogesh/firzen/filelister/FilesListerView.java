@@ -23,8 +23,6 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-import yogesh.firzen.mukkiasevaigal.M;
-import yogesh.firzen.mukkiasevaigal.S;
 
 /**
  * Created by S.Yogesh on 14-02-2016.
