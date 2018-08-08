@@ -20,8 +20,6 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
-
-
 /**
  * Created by root on 9/7/17.
  */
@@ -36,6 +34,7 @@ class FileListerAdapter extends RecyclerView.Adapter<FileListerAdapter.FileListH
     private Context context;
     private FilesListerView listerView;
     private boolean unreadableDir;
+    private GlobalBus globalBus;
 
 
     FileListerAdapter(File defaultDir, FilesListerView view) {
@@ -123,9 +122,6 @@ class FileListerAdapter extends RecyclerView.Adapter<FileListerAdapter.FileListH
                     switch (getFileFilter()) {
                         case ALL_FILES:
                             return true;
-
-                        case DIRECTORY_ONLY:
-                            return file.isDirectory();
                     }
                     return false;
                 }
@@ -134,6 +130,7 @@ class FileListerAdapter extends RecyclerView.Adapter<FileListerAdapter.FileListH
                 fs = new LinkedList<>(Arrays.asList(files));
             }
         }
+      
         data = new LinkedList<>(fs);
         Collections.sort(data, new Comparator<File>() {
             @Override
@@ -172,14 +169,15 @@ class FileListerAdapter extends RecyclerView.Adapter<FileListerAdapter.FileListH
 
     @Override
     public void onBindViewHolder(FileListHolder holder, int position) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this.getContext(), R.style.AlertDialogStyle);
-
         File f = data.get(position);
         if (f != null) {
             holder.name.setText(f.getName());
         } else if (!unreadableDir) {
-            holder.name.setText("Create a new Folder here");
-            holder.icon.setImageResource(R.drawable.ic_record);
+            /*holder.name.setText("Create a new Folder here");
+            holder.icon.setImageResource(R.drawable.ic_create_new_folder_black_48dp);*/
+
+            holder.name.setVisibility(View.GONE);
+            holder.icon.setVisibility(View.GONE);
         }
         if (unreadableDir) {
             if (f != null) {
@@ -247,9 +245,11 @@ class FileListerAdapter extends RecyclerView.Adapter<FileListerAdapter.FileListH
                     public void onClick(View v) {
                         String name = editText.getText().toString();
                         if (TextUtils.isEmpty(name)) {
+                       
                         } else {
                             File file = new File(selectedFile, name);
                             if (file.exists()) {
+                           
                             } else {
                                 dialog.dismiss();
                                 file.mkdirs();
