@@ -95,22 +95,19 @@ public class FileListerDialog {
                 if (onFileSelectedListener != null)
                     onFileSelectedListener.onFileSelected(filesListerView.getSelected(), filesListerView.getSelected().getAbsolutePath());
             }
-        });
-        */
+        });*/
         alertDialog.setButton(BUTTON_NEUTRAL, context.getText(R.string.cancel_text), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 alertDialog.dismiss();
             }
         });
-       /*alertDialog.setButton(BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+        /*alertDialog.setButton(BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 dialogInterface.dismiss();
             }
         });*/
-
-
     }
 
     /**
@@ -141,6 +138,7 @@ public class FileListerDialog {
         alertDialog.show();
 
         GlobalBus.getBus().register(this);
+
         /*alertDialog.getButton(BUTTON_NEUTRAL).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
