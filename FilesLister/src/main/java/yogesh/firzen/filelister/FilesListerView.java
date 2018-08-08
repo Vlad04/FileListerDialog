@@ -23,6 +23,7 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
+
 class FilesListerView extends RecyclerView {
 
     private FileListerAdapter adapter;

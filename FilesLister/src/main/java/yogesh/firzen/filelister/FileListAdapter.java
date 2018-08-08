@@ -20,6 +20,7 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
+
 /**
  * Created by root on 9/7/17.
  */
@@ -122,6 +123,7 @@ class FileListerAdapter extends RecyclerView.Adapter<FileListerAdapter.FileListH
                     switch (getFileFilter()) {
                         case ALL_FILES:
                             return true;
+
                     }
                     return false;
                 }
@@ -130,7 +132,7 @@ class FileListerAdapter extends RecyclerView.Adapter<FileListerAdapter.FileListH
                 fs = new LinkedList<>(Arrays.asList(files));
             }
         }
-      
+
         data = new LinkedList<>(fs);
         Collections.sort(data, new Comparator<File>() {
             @Override
@@ -193,9 +195,8 @@ class FileListerAdapter extends RecyclerView.Adapter<FileListerAdapter.FileListH
         } else if (f != null) {
             if (f.isDirectory())
                 holder.icon.setImageResource(R.drawable.ic_record);
-            else{
+            else
                 holder.icon.setImageResource(R.drawable.ic_document);
-            }
         }
     }
 
@@ -245,11 +246,9 @@ class FileListerAdapter extends RecyclerView.Adapter<FileListerAdapter.FileListH
                     public void onClick(View v) {
                         String name = editText.getText().toString();
                         if (TextUtils.isEmpty(name)) {
-                       
                         } else {
                             File file = new File(selectedFile, name);
                             if (file.exists()) {
-                           
                             } else {
                                 dialog.dismiss();
                                 file.mkdirs();
