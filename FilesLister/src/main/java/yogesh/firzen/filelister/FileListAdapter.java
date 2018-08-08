@@ -20,9 +20,6 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
-//import yogesh.firzen.mukkiasevaigal.M;
-//import yogesh.firzen.mukkiasevaigal.S;
-
 /**
  * Created by root on 9/7/17.
  */
@@ -125,14 +122,6 @@ class FileListerAdapter extends RecyclerView.Adapter<FileListerAdapter.FileListH
                     switch (getFileFilter()) {
                         case ALL_FILES:
                             return true;
-                        /*case AUDIO_ONLY:
-                            return S.isAudio(file) || file.isDirectory();
-                        case IMAGE_ONLY:
-                            return S.isImage(file) || file.isDirectory();
-                        case VIDEO_ONLY:
-                            return S.isVideo(file) || file.isDirectory();
-                        case DIRECTORY_ONLY:
-                            return file.isDirectory();*/
                     }
                     return false;
                 }
@@ -141,7 +130,7 @@ class FileListerAdapter extends RecyclerView.Adapter<FileListerAdapter.FileListH
                 fs = new LinkedList<>(Arrays.asList(files));
             }
         }
-        //M.L("From FileListAdapter", fs);
+      
         data = new LinkedList<>(fs);
         Collections.sort(data, new Comparator<File>() {
             @Override
@@ -204,14 +193,9 @@ class FileListerAdapter extends RecyclerView.Adapter<FileListerAdapter.FileListH
         } else if (f != null) {
             if (f.isDirectory())
                 holder.icon.setImageResource(R.drawable.ic_record);
-            /*else if (S.isImage(f))
-                holder.icon.setImageResource(R.drawable.ic_photo_black_48dp);
-            else if (S.isVideo(f))
-                holder.icon.setImageResource(R.drawable.ic_videocam_black_48dp);
-            else if (S.isAudio(f))
-                holder.icon.setImageResource(R.drawable.ic_audiotrack_black_48dp);*/
-            else
+            else{
                 holder.icon.setImageResource(R.drawable.ic_document);
+            }
         }
     }
 
@@ -261,11 +245,11 @@ class FileListerAdapter extends RecyclerView.Adapter<FileListerAdapter.FileListH
                     public void onClick(View v) {
                         String name = editText.getText().toString();
                         if (TextUtils.isEmpty(name)) {
-                            //M.T(getContext(), "Please enter a valid folder name");
+                       
                         } else {
                             File file = new File(selectedFile, name);
                             if (file.exists()) {
-                                //M.T(getContext(), "This folder already exists.\n Please provide another name for the folder");
+                           
                             } else {
                                 dialog.dismiss();
                                 file.mkdirs();
@@ -277,7 +261,6 @@ class FileListerAdapter extends RecyclerView.Adapter<FileListerAdapter.FileListH
             } else {
                 File f = data.get(getPosition());
                 selectedFile = f;
-                //M.L("From FileLister", f.getAbsolutePath());
                 if (f.isDirectory()) {
                     fileLister(f);
                 } else {
