@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="namma_per_uh">FileLister</string>
+    <string name="create_folder_hint">Enter Folder Name Here</string>
+    <string name="internal_text">Interna</string>
+    <string name="external_text">Externa</string>
+    <string name="selectFile_text">Selecciona un archivo</string>
+    <string name="selectDirectory_text">Selecciona una carpeta</string>
+    <string name="selectVideo_text">Selecciona un video</string>
+    <string name="selectImage_text">Selecciona una imagen</string>
+    <string name="selectAudio_text">Selecciona un audio</string>
+    <string name="cancel_text"><font color='#0591c9'>Cancelar</font></string>
+</resources>

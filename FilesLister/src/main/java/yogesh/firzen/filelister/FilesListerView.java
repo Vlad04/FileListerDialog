@@ -24,9 +24,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 
-/**
- * Created by S.Yogesh on 14-02-2016.
- */
 class FilesListerView extends RecyclerView {
 
     private FileListerAdapter adapter;

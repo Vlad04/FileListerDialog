@@ -6,6 +6,8 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 
+import com.squareup.otto.Subscribe;
+
 import java.io.File;
 
 import static android.content.DialogInterface.BUTTON_NEGATIVE;
@@ -86,26 +88,26 @@ public class FileListerDialog {
     private void init(Context context) {
         filesListerView = new FilesListerView(context);
         alertDialog.setView(filesListerView);
-        alertDialog.setButton(BUTTON_POSITIVE, "Select", new DialogInterface.OnClickListener() {
+        /*alertDialog.setButton(BUTTON_POSITIVE, "Select", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 dialogInterface.dismiss();
                 if (onFileSelectedListener != null)
                     onFileSelectedListener.onFileSelected(filesListerView.getSelected(), filesListerView.getSelected().getAbsolutePath());
             }
-        });
-        alertDialog.setButton(BUTTON_NEUTRAL, "Default Dir", new DialogInterface.OnClickListener() {
+        });*/
+        alertDialog.setButton(BUTTON_NEUTRAL, context.getText(R.string.cancel_text), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                //filesListerView.goToDefaultDir();
+                alertDialog.dismiss();
             }
         });
-        alertDialog.setButton(BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+        /*alertDialog.setButton(BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 dialogInterface.dismiss();
             }
-        });
+        });*/
     }
 
     /**
@@ -115,31 +117,41 @@ public class FileListerDialog {
         //getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
         switch (filesListerView.getFileFilter()) {
             case DIRECTORY_ONLY:
-                alertDialog.setTitle("Select a directory");
+                alertDialog.setTitle(R.string.selectDirectory_text);
                 break;
             case VIDEO_ONLY:
-                alertDialog.setTitle("Select a Video file");
+                alertDialog.setTitle(R.string.selectVideo_text);
                 break;
             case IMAGE_ONLY:
-                alertDialog.setTitle("Select an Image file");
+                alertDialog.setTitle(R.string.selectImage_text);
                 break;
             case AUDIO_ONLY:
-                alertDialog.setTitle("Select an Audio file");
+                alertDialog.setTitle(R.string.selectAudio_text);
                 break;
             case ALL_FILES:
-                alertDialog.setTitle("Select a file");
+                alertDialog.setTitle(R.string.selectFile_text);
                 break;
             default:
-                alertDialog.setTitle("Select a file");
+                alertDialog.setTitle(R.string.selectFile_text);
         }
         filesListerView.start();
         alertDialog.show();
-        alertDialog.getButton(BUTTON_NEUTRAL).setOnClickListener(new View.OnClickListener() {
+
+        GlobalBus.getBus().register(this);
+
+        /*alertDialog.getButton(BUTTON_NEUTRAL).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 filesListerView.goToDefaultDir();
             }
-        });
+        });*/
+    }
+
+    @Subscribe
+    public void dismiss(Events.Selected message){
+        alertDialog.dismiss();
+        if (onFileSelectedListener != null)
+            onFileSelectedListener.onFileSelected(filesListerView.getSelected(), filesListerView.getSelected().getAbsolutePath());
     }
 
     /**

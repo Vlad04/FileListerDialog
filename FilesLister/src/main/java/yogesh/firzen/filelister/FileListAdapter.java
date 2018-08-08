@@ -21,7 +21,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 
-
 /**
  * Created by root on 9/7/17.
  */
@@ -36,6 +35,7 @@ class FileListerAdapter extends RecyclerView.Adapter<FileListerAdapter.FileListH
     private Context context;
     private FilesListerView listerView;
     private boolean unreadableDir;
+    private GlobalBus globalBus;
 
 
     FileListerAdapter(File defaultDir, FilesListerView view) {
@@ -132,6 +132,7 @@ class FileListerAdapter extends RecyclerView.Adapter<FileListerAdapter.FileListH
                 fs = new LinkedList<>(Arrays.asList(files));
             }
         }
+
         data = new LinkedList<>(fs);
         Collections.sort(data, new Comparator<File>() {
             @Override
@@ -174,15 +175,18 @@ class FileListerAdapter extends RecyclerView.Adapter<FileListerAdapter.FileListH
         if (f != null) {
             holder.name.setText(f.getName());
         } else if (!unreadableDir) {
-            holder.name.setText("Create a new Folder here");
-            holder.icon.setImageResource(R.drawable.ic_create_new_folder_black_48dp);
+            /*holder.name.setText("Create a new Folder here");
+            holder.icon.setImageResource(R.drawable.ic_create_new_folder_black_48dp);*/
+
+            holder.name.setVisibility(View.GONE);
+            holder.icon.setVisibility(View.GONE);
         }
         if (unreadableDir) {
             if (f != null) {
                 if (position == 0) {
-                    holder.name.setText(f.getName() + " (Internal)");
+                    holder.name.setText(f.getName() + " (" + getContext().getString(R.string.internal_text) + ")");
                 } else {
-                    holder.name.setText(f.getName() + " (External)");
+                    holder.name.setText(f.getName() + " (" + getContext().getString(R.string.external_text) + ")");
                 }
             }
         }
@@ -191,7 +195,6 @@ class FileListerAdapter extends RecyclerView.Adapter<FileListerAdapter.FileListH
         } else if (f != null) {
             if (f.isDirectory())
                 holder.icon.setImageResource(R.drawable.ic_record);
-
             else
                 holder.icon.setImageResource(R.drawable.ic_document);
         }
@@ -260,6 +263,7 @@ class FileListerAdapter extends RecyclerView.Adapter<FileListerAdapter.FileListH
                 if (f.isDirectory()) {
                     fileLister(f);
                 } else {
+                    GlobalBus.getBus().post(new Events.Selected("UPDATE"));
                 }
             }
         }

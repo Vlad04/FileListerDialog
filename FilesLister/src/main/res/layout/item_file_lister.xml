@@ -26,6 +26,6 @@
             android:layout_weight="0.9"
             android:gravity="center_vertical"
             android:text="Folder"
-            android:textSize="15sp" />
+            android:textSize="18sp" />
     </LinearLayout>
 </RelativeLayout>
