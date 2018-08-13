@@ -1,18 +1,16 @@
-package yogesh.firzen.filelister;
+package com.nextline;
 
 import android.content.Context;
 import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
-import android.view.View;
 
+import com.filelister.R;
 import com.squareup.otto.Subscribe;
 
 import java.io.File;
 
-import static android.content.DialogInterface.BUTTON_NEGATIVE;
 import static android.content.DialogInterface.BUTTON_NEUTRAL;
-import static android.content.DialogInterface.BUTTON_POSITIVE;
 
 /**
  * A File Lister Dialog
@@ -51,6 +49,8 @@ public class FileListerDialog {
     private FilesListerView filesListerView;
 
     private OnFileSelectedListener onFileSelectedListener;
+
+    private Boolean bus = false;
 
     private FileListerDialog(@NonNull Context context) {
         //super(context);
@@ -150,8 +150,14 @@ public class FileListerDialog {
     @Subscribe
     public void dismiss(Events.Selected message){
         alertDialog.dismiss();
-        if (onFileSelectedListener != null)
+        /*if (onFileSelectedListener != null)
+            onFileSelectedListener.onFileSelected(filesListerView.getSelected(), filesListerView.getSelected().getAbsolutePath());*/
+        System.out.println("====================ENTRO " + bus);
+        if (onFileSelectedListener != null && !bus) {
+            System.out.println("====================ENTRO MESSAGE " + bus);
+            bus = true;
             onFileSelectedListener.onFileSelected(filesListerView.getSelected(), filesListerView.getSelected().getAbsolutePath());
+        }
     }
 
     /**

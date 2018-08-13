@@ -1,4 +1,4 @@
-package yogesh.firzen.filelister;
+package com.nextline;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.filelister.R;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -130,7 +132,7 @@ class FileListerAdapter extends RecyclerView.Adapter<FileListerAdapter.FileListH
                 fs = new LinkedList<>(Arrays.asList(files));
             }
         }
-      
+
         data = new LinkedList<>(fs);
         Collections.sort(data, new Comparator<File>() {
             @Override
@@ -245,11 +247,11 @@ class FileListerAdapter extends RecyclerView.Adapter<FileListerAdapter.FileListH
                     public void onClick(View v) {
                         String name = editText.getText().toString();
                         if (TextUtils.isEmpty(name)) {
-                       
+
                         } else {
                             File file = new File(selectedFile, name);
                             if (file.exists()) {
-                           
+
                             } else {
                                 dialog.dismiss();
                                 file.mkdirs();
