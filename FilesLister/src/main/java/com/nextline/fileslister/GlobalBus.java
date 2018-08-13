@@ -1,4 +1,4 @@
-package com.nextline;
+package com.nextline.fileslister;
 
 import com.squareup.otto.Bus;
 

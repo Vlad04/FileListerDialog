@@ -1,4 +1,4 @@
-package com.nextline;
+package com.nextline.fileslister;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -229,7 +229,7 @@ class FileListerAdapter extends RecyclerView.Adapter<FileListerAdapter.FileListH
         @Override
         public void onClick(View v) {
             if (data.get(getPosition()) == null) {
-                View view = View.inflate(getContext(), R.layout.dialog_create_folder, null);
+                /*View view = View.inflate(getContext(), R.layout.dialog_create_folder, null);
                 final AppCompatEditText editText = view.findViewById(R.id.edittext);
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext())
                         .setView(view)
@@ -259,7 +259,7 @@ class FileListerAdapter extends RecyclerView.Adapter<FileListerAdapter.FileListH
                             }
                         }
                     }
-                });
+                });*/
             } else {
                 File f = data.get(getPosition());
                 selectedFile = f;

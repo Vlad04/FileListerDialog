@@ -1,4 +1,4 @@
-package com.nextline;
+package com.nextline.fileslister;
 
 import android.content.Context;
 import android.content.DialogInterface;

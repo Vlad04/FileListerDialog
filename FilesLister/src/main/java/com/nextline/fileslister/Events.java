@@ -1,4 +1,4 @@
-package com.nextline;
+package com.nextline.fileslister;
 
 /**
  * Created by vladimir on 27/07/18.

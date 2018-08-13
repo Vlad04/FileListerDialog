@@ -4,8 +4,8 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
 import kotlinx.android.synthetic.main.activity_main.*
-import com.nextline.FileListerDialog
-import com.nextline.OnFileSelectedListener
+import com.nextline.fileslister.FileListerDialog
+import com.nextline.fileslister.OnFileSelectedListener
 import java.io.File
 
 class MainActivity : AppCompatActivity() {
