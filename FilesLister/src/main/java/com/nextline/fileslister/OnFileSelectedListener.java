@@ -1,4 +1,4 @@
-package yogesh.firzen.filelister;
+package com.nextline.fileslister;
 
 import java.io.File;
 
@@ -9,3 +9,4 @@ import java.io.File;
 public interface OnFileSelectedListener {
     void onFileSelected(File file, String path);
 }
+

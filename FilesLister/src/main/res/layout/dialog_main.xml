@@ -5,7 +5,7 @@
     android:background="#ffffff"
     android:orientation="vertical">
 
-    <yogesh.firzen.filelister.FilesListerView
+    <com.nextline.fileslister.FilesListerView
         android:layout_width="match_parent"
         android:background="#ffffff"
         android:theme="@style/AlertDialog.AppCompat.Light"

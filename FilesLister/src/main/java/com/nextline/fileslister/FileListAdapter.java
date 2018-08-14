@@ -1,4 +1,4 @@
-package yogesh.firzen.filelister;
+package com.nextline.fileslister;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.filelister.R;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -228,42 +230,14 @@ class FileListerAdapter extends RecyclerView.Adapter<FileListerAdapter.FileListH
         @Override
         public void onClick(View v) {
             if (data.get(getPosition()) == null) {
-                View view = View.inflate(getContext(), R.layout.dialog_create_folder, null);
-                final AppCompatEditText editText = view.findViewById(R.id.edittext);
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext())
-                        .setView(view)
-                        .setTitle("Enter the folder name")
-                        .setPositiveButton("Create", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
 
-                            }
-                        });
-                final AlertDialog dialog = builder.create();
-                dialog.show();
-                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        String name = editText.getText().toString();
-                        if (TextUtils.isEmpty(name)) {
-                        } else {
-                            File file = new File(selectedFile, name);
-                            if (file.exists()) {
-                            } else {
-                                dialog.dismiss();
-                                file.mkdirs();
-                                fileLister(file);
-                            }
-                        }
-                    }
-                });
             } else {
                 File f = data.get(getPosition());
                 selectedFile = f;
                 if (f.isDirectory()) {
                     fileLister(f);
                 } else {
-                    GlobalBus.getBus().post(new Events.Selected("UPDATE"));
+                    GlobalBus.getBus().post(new Events.Selected("UPDATE FILE"));
                 }
             }
         }
