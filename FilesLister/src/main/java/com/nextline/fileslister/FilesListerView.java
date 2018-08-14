@@ -8,6 +8,7 @@ import android.util.AttributeSet;
 
 import java.io.File;
 
+
 class FilesListerView extends RecyclerView {
 
     private FileListerAdapter adapter;

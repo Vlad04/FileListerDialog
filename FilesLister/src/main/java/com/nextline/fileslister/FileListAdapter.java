@@ -22,6 +22,7 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
+
 /**
  * Created by root on 9/7/17.
  */
@@ -124,6 +125,7 @@ class FileListerAdapter extends RecyclerView.Adapter<FileListerAdapter.FileListH
                     switch (getFileFilter()) {
                         case ALL_FILES:
                             return true;
+
                     }
                     return false;
                 }
@@ -195,9 +197,8 @@ class FileListerAdapter extends RecyclerView.Adapter<FileListerAdapter.FileListH
         } else if (f != null) {
             if (f.isDirectory())
                 holder.icon.setImageResource(R.drawable.ic_record);
-            else{
+            else
                 holder.icon.setImageResource(R.drawable.ic_document);
-            }
         }
     }
 
@@ -229,37 +230,7 @@ class FileListerAdapter extends RecyclerView.Adapter<FileListerAdapter.FileListH
         @Override
         public void onClick(View v) {
             if (data.get(getPosition()) == null) {
-                /*View view = View.inflate(getContext(), R.layout.dialog_create_folder, null);
-                final AppCompatEditText editText = view.findViewById(R.id.edittext);
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext())
-                        .setView(view)
-                        .setTitle("Enter the folder name")
-                        .setPositiveButton("Create", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
 
-                            }
-                        });
-                final AlertDialog dialog = builder.create();
-                dialog.show();
-                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        String name = editText.getText().toString();
-                        if (TextUtils.isEmpty(name)) {
-
-                        } else {
-                            File file = new File(selectedFile, name);
-                            if (file.exists()) {
-
-                            } else {
-                                dialog.dismiss();
-                                file.mkdirs();
-                                fileLister(file);
-                            }
-                        }
-                    }
-                });*/
             } else {
                 File f = data.get(getPosition());
                 selectedFile = f;
