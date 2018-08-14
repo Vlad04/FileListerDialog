@@ -266,7 +266,7 @@ class FileListerAdapter extends RecyclerView.Adapter<FileListerAdapter.FileListH
                 if (f.isDirectory()) {
                     fileLister(f);
                 } else {
-                    GlobalBus.getBus().post(new Events.Selected("UPDATE"));
+                    GlobalBus.getBus().post(new Events.Selected("UPDATE FILE"));
                 }
             }
         }
